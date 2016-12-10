@@ -1,8 +1,11 @@
 package pub.edholm.aoc2016.day3;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static org.apache.commons.lang3.Validate.isTrue;
 
 /**
  * Created by Emil Edholm on 2016-12-10.
@@ -26,6 +29,12 @@ class Triangle {
                 .map(Integer::valueOf)
                 .sorted()
                 .collect(Collectors.toList());
+        return new Triangle(sides.get(0), sides.get(1), sides.get(2));
+    }
+
+    public static Triangle valueOf(List<Integer> sides) {
+        isTrue(sides.size() == 3);
+        Collections.sort(sides);
         return new Triangle(sides.get(0), sides.get(1), sides.get(2));
     }
 
@@ -55,6 +64,7 @@ class Triangle {
                 "a=" + a +
                 ", b=" + b +
                 ", c=" + c +
+                ", possible=" + isPossible() +
                 '}';
     }
 }

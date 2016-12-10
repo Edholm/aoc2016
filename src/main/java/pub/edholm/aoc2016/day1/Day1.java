@@ -14,11 +14,9 @@ class Day1 implements Aoc {
     public static void main(String[] args) {
         String input = IoUtils.readFile("day1.input");
         final Day1 day1 = new Day1();
-        System.out.println("Part 1");
-        System.out.println(day1.solvePart1(input));
-
-        System.out.println("Part 2");
-        System.out.println(day1.solvePart2(input));
+        System.out.println("Day 1:");
+        System.out.println("\tPart 1: " + day1.solvePart1(input) + " blocks away");
+        System.out.println("\tPart 2: " + day1.solvePart2(input) + " blocks away");
     }
 
 

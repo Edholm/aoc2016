@@ -15,11 +15,9 @@ public class Day2 implements Aoc {
 
     public static void main(String[] args) {
         final Day2 day2 = new Day2();
-        System.out.print("Day 2, part 1: ");
-        System.out.println(day2.solvePart1("day2.input"));
-
-        System.out.print("Day 2, part 2: ");
-        System.out.println(day2.solvePart2("day2.input"));
+        System.out.println("Day 2:");
+        System.out.println("\tPart 1: The bathroom code is " + day2.solvePart1("day2.input"));
+        System.out.println("\tPart 2: The bathroom code is " + day2.solvePart2("day2.input"));
     }
 
     private List<List<Direction>> getDirections(List<String> input) {

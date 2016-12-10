@@ -3,6 +3,7 @@ package pub.edholm.aoc2016.day3;
 import pub.edholm.aoc2016.Aoc;
 import pub.edholm.aoc2016.utils.IoUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,6 +30,30 @@ public class Day3 implements Aoc {
 
     @Override
     public String solvePart2(String resourceName) {
-        return null;
+        final List<String> input = IoUtils.readLines(resourceName);
+        final List<String[]> linesAndCols = input.stream().map(s -> s.trim().split("\\s+")).collect(Collectors.toList());
+        final List<Triangle> triangles = new ArrayList<>();
+
+        List<String> col1 = new ArrayList<>(3);
+        List<String> col2 = new ArrayList<>(3);
+        List<String> col3 = new ArrayList<>(3);
+        for (String[] columns : linesAndCols) {
+            col1.add(columns[0]);
+            col2.add(columns[1]);
+            col3.add(columns[2]);
+
+           if (col1.size() == 3) {
+               final List<Integer> col1Ints = col1.stream().map(Integer::valueOf).collect(Collectors.toList());
+               final List<Integer> col2Ints = col2.stream().map(Integer::valueOf).collect(Collectors.toList());
+               final List<Integer> col3Ints = col3.stream().map(Integer::valueOf).collect(Collectors.toList());
+               triangles.add(Triangle.valueOf(col1Ints));
+               triangles.add(Triangle.valueOf(col2Ints));
+               triangles.add(Triangle.valueOf(col3Ints));
+               col1.clear();
+               col2.clear();
+               col3.clear();
+           }
+        }
+        return triangles.stream().filter(Triangle::isPossible).count() + " valid triangles";
     }
 }
