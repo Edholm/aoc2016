@@ -35,32 +35,37 @@ public class Day2 implements Aoc {
         return directions;
     }
 
-    @Override
-    public String solvePart1(String resourceName) {
+    private String solve(String resourceName, final Keypad keypad, final int startX, final int startY) {
         final List<String> input = IoUtils.readLines(resourceName);
         final List<List<Direction>> directions = getDirections(input);
 
-        int[][] keypad = new int[][] {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8,  9}
-        };
-
         StringBuilder sb = new StringBuilder();
-        int x = 1, y = 1;
+
+        Pair<Integer, Integer> coordinate = Pair.of(startX, startY);
         for (List<Direction> digit : directions) {
             for (Direction direction : digit) {
-                Pair<Integer, Integer> newCoord = direction.move(x, y);
-                x = newCoord.getLeft();
-                y = newCoord.getRight();
+                coordinate = direction.move(coordinate, keypad);
             }
-            sb.append(keypad[y][x]);
+            sb.append(keypad.push(coordinate.getLeft(), coordinate.getRight()));
         }
         return sb.toString();
+
     }
 
     @Override
-    public String solvePart2(String input) {
-        return null;
+    public String solvePart1(String resourceName) {
+        return solve(resourceName, new Keypad(), 1, 1);
+    }
+
+    @Override
+    public String solvePart2(String resourceName) {
+        String[][] weirdKeypad = new String[][] {
+                {"", "",  "1", "",  ""},
+                {"", "2", "3", "4", ""},
+                {"5","6", "7", "8", "9"},
+                {"", "A", "B", "C", ""},
+                {"", "",  "D", "",  ""},
+        };
+        return solve(resourceName, new Keypad(weirdKeypad), 0, 2);
     }
 }

@@ -5,36 +5,37 @@ import org.apache.commons.lang3.tuple.Pair;
 /**
  * Created by Emil Edholm on 2016-12-10.
  */
-public enum Direction {
+enum Direction {
     Up,
     Down,
     Left,
     Right;
 
-    public Pair<Integer, Integer> move(int oldX, int oldY) {
-        int[][] keypad = new int[][] {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8,  9}
-        };
+    public Pair<Integer, Integer> move(final Pair<Integer, Integer> old, Keypad keypad) {
+        final int oldX = old.getLeft();
+        final int oldY = old.getRight();
         int newX = oldX;
         int newY = oldY;
-        //System.out.printf("Moving %-5s from %d", this, keypad[oldY][oldX]);
+        //System.out.printf("Moving %-5s from %s", this, keypad.push(oldX, oldY));
         switch (this) {
             case Up:
                 newY = (oldY == 0) ? oldY : oldY - 1;
                 break;
             case Down:
-                newY = (oldY == 2) ? oldY : oldY + 1;
+                newY = (oldY == keypad.height()-1) ? oldY : oldY + 1;
                 break;
             case Left:
                 newX = (oldX == 0) ? oldX : oldX - 1;
                 break;
             case Right:
-                newX = (oldX == 2) ? oldX : oldX + 1;
+                newX = (oldX == keypad.length()-1) ? oldX : oldX + 1;
                 break;
         }
-        //System.out.printf(" -> %d\n", keypad[newY][newX]);
+        if (!keypad.isValidMove(newX, newY)) {
+            newX = oldX;
+            newY = oldY;
+        }
+        //System.out.printf(" -> %s\n", keypad.push(newX, newY));
         return Pair.of(newX, newY);
     }
 

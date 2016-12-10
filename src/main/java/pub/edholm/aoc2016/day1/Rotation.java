@@ -3,7 +3,7 @@ package pub.edholm.aoc2016.day1;
 /**
  * Created by Emil Edholm on 2016-12-09.
  */
-public enum Rotation {
+enum Rotation {
     North(0, 1),
     East(1, 0),
     South(0, -1),

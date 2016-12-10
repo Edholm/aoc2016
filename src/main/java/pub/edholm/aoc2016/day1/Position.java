@@ -3,7 +3,7 @@ package pub.edholm.aoc2016.day1;
 /**
  * Created by Emil Edholm on 2016-12-09.
  */
-public class Position {
+class Position {
     public final int x, y;
     private final Rotation rotation;
 
