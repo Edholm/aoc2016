@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Emil Edholm on 2016-12-08.
  */
-class Day1 implements Aoc {
+public class Day1 implements Aoc {
     public static void main(String[] args) {
         String input = IoUtils.readFile("day1.input");
         final Day1 day1 = new Day1();

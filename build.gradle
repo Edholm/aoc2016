@@ -2,12 +2,15 @@ group 'pub.edholm'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'application'
 
+mainClassName = "pub.edholm.aoc2016.Main"
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
+
 
 dependencies {
     compile group: 'commons-io', name: 'commons-io', version: '2.+'
