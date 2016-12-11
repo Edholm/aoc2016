@@ -3,6 +3,7 @@ package pub.edholm.aoc2016;
 import pub.edholm.aoc2016.day1.Day1;
 import pub.edholm.aoc2016.day2.Day2;
 import pub.edholm.aoc2016.day3.Day3;
+import pub.edholm.aoc2016.day4.Day4;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -17,7 +18,8 @@ public class Main {
         List<Class<? extends Aoc>> days = Arrays.asList(
                 Day1.class,
                 Day2.class,
-                Day3.class);
+                Day3.class,
+                Day4.class);
 
         for (Class<? extends Aoc> day : days) {
             Method mainMethod = day.getMethod("main", String[].class);
