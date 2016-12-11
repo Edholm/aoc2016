@@ -20,8 +20,31 @@ final class Room {
         this.checksum = checksum;
     }
 
+    public String decryptedName() {
+        return decrypt();
+    }
+
     public int sectorId() {
         return sectorId;
+    }
+
+    public String decrypt() {
+        return name
+                .chars()
+                .mapToObj(c -> (char) c)
+                .map(c -> shift(c, sectorId))
+                .map(Object::toString)
+                .collect(Collectors.joining());
+    }
+
+    private char shift(char c, int places) {
+        if (c == ' ' || c == '-') {
+            return ' ';
+        }
+
+        char a = 'a';
+        int newC = (((c - a) + places) % 26);
+        return (char) (newC + a);
     }
 
     public boolean isReal() {
