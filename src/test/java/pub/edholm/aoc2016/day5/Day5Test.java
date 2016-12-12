@@ -15,4 +15,9 @@ public class Day5Test {
         assertThat(day5.solvePart1("day5.input.test"), is("18f47a30"));
     }
 
+    @Test
+    public void solvePart2() throws Exception {
+        final Day5 day5 = new Day5();
+        assertThat(day5.solvePart2("day5.input.test"), is("05ace8e3"));
+    }
 }
