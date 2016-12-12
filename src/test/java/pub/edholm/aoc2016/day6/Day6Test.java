@@ -15,4 +15,10 @@ public class Day6Test {
         assertThat(day6.solvePart1("day6.input.test"), is("easter"));
     }
 
+    @Test
+    public void solvePart2() throws Exception {
+        final Day6 day6 = new Day6();
+        assertThat(day6.solvePart2("day6.input.test"), is("advent"));
+    }
+
 }
