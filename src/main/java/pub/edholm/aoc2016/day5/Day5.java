@@ -39,6 +39,7 @@ public class Day5 implements Aoc {
             counter++;
         }
 
+        System.out.println("Final count: " + counter);
         return passwordBuilder.toString();
     }
 
@@ -66,6 +67,7 @@ public class Day5 implements Aoc {
             counter++;
         }
 
+        System.out.println("Final count: " + counter);
         return Stream.of(password).collect(Collectors.joining());
 
     }
